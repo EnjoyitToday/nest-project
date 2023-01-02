@@ -1,6 +1,6 @@
 import { Exclude } from "class-transformer";
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
-import { IsUnique } from "../validation/IsUnique.validator";
+import { IsUnique } from "./validation/IsUnique.validator";
 
 export class User{
     id:number;
