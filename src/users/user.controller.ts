@@ -14,9 +14,14 @@ export class UserController{
         return this.UserService.getUsers();
     };
 
-    @Get(':password')
-    public getUsersByName(@Param('password') password:string):User{
-        return this.UserService.getUsersByName(password);
+    @Get('/name/:name')
+    public getUsersByName(@Param('name') name:string):User{
+        return this.UserService.getUsersByNickname(name);
+    };
+
+    @Get('/password/:password')
+    public getUsersByPass(@Param('password') password:string):User{
+        return this.UserService.getUsersByPass(password);
     };
 
     @Post()

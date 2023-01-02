@@ -10,12 +10,16 @@ export class UserService{
         return this.users
     };
 
-    public getUsersByName(password:string):any{
-        let found = this.users.find(item => item.password == password);
-        return found;
+    public getUsersByPass(password:string):User{
+        return this.users.find(item => item.password == password);
+         
     };
 
-    createUser(user:User):User{
+    public getUsersByNickname(nickname:string):User{
+        return this.users.find(item => item.nickname == nickname);
+    };
+
+    public createUser(user:User):User{
         this.users.push(user);
 
         return user;

@@ -1,4 +1,6 @@
-import { IsNotEmpty, isString } from "class-validator";
+import { Exclude } from "class-transformer";
+import { IsEmail, IsNotEmpty, IsString } from "class-validator";
+import { IsUnique } from "../validation/IsUnique.validator";
 
 export class User{
     id:number;
@@ -6,8 +8,13 @@ export class User{
     @IsNotEmpty({
         message: `Nome obrigatório`
     })
-    name:string;
+    @IsString()
+    @IsUnique({
+        message: `Nome já utilizado`
+    })
+    nickname:string;
     
+    @IsEmail()
     @IsNotEmpty({
         message: `Email obrigatório`
     })
@@ -15,7 +22,10 @@ export class User{
     
     @IsNotEmpty({
         message: `Senha obrigatória`
-        })
+    })
+    @Exclude({
+        toPlainOnly:true
+    })
     password:string
     
     @IsNotEmpty({
